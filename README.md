@@ -2,5 +2,5 @@
 
 ```
 cargo install recurse
-recurse walk DIRECTORY_PATH_TO_CONVERT | cargo run --release gb2312
+recurse walk DIRECTORY_PATH_TO_CONVERT | cargo run --release gbk
 ```

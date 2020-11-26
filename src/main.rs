@@ -43,31 +43,30 @@ fn main() {
 }
 
 fn convert_encoding(file: &str, encoding_from: &'static Encoding, encoding_to: &'static Encoding) {
+    println!("{}", file);
     match std::fs::read(file) {
         Ok(bytes) => {
             let (string, encoding, has_malformed) = encoding_from.decode(&bytes);
             if encoding != encoding_from {
-                println!("Detected encoding is {}: {}", encoding.name(), file);
+                println!("^^^^Detected encoding is {}", encoding.name());
             }
             if has_malformed {
-                println!("There are malformed characters in {}", file);
+                println!("^^^^There are malformed characters");
             } else {
                 let (bytes, encoding, has_unmappable) = encoding_to.encode(&string);
                 if encoding != encoding_to {
-                    println!("Saved encoding is {}: {}", encoding.name(), file);
+                    println!("^^^^Saved encoding is {}", encoding.name());
                 }
                 if has_unmappable {
-                    println!("There are unmappable characters in {}", file);
+                    println!("^^^^There are unmappable characters");
                 }
                 std::fs::write(file, bytes).unwrap_or_else(|err| {
-                    println!("Can not write: {}", file);
-                    println!("{:?}", err);
+                    println!("^^^^write error: {}", err);
                 });
             }
         }
         Err(err) => {
-            println!("Can not read: {}", file);
-            println!("{:?}", err);
+            println!("^^^^read error: {}", err);
         }
     }
 }
