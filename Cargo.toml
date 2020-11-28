@@ -1,10 +1,16 @@
 [package]
 authors = ["Junfeng Liu <china.liujunfeng@gmail.com>"]
+categories = ["text-processing", "command-line-utilities"]
+description = "Convert encoding of text files in batch."
 edition = "2018"
+keywords = ["encoding"]
+license = "MIT"
 name = "convert_encoding"
+readme = "README.md"
+repository = "https://github.com/J-F-Liu/convert_encoding.git"
 version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-encoding_rs = "0.8.26"
+encoding_rs = "^0.8.26"
